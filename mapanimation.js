@@ -15,7 +15,6 @@ const busStops = [
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2ltb24tY2FwcmlsZXMiLCJhIjoiY2tyZmQzZ2hlNXZvcTMxcWh3bTQyNHpsdCJ9.VoAYB8moSu1T9bmTI5pVQg';
 
-// This is the map instance
 let map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
@@ -23,19 +22,32 @@ let map = new mapboxgl.Map({
     zoom: 14,
 });
 
-var marker = new mapboxgl.Marker()
+var marker = new mapboxgl.Marker({'color': '#33CCFF'})
     .setLngLat([-71.093729, 42.359244])
     .addTo(map);
+
 let counter = 0;
+
 function move() {
     setTimeout(()=>{
         if (counter >= busStops.length) return;
         marker.setLngLat(busStops[counter]);
         counter++;
         move();
-    }, 1000);
+        update();
+    }, 3000);
 }
 
-if (typeof module !== 'undefined') {
-    module.exports = { move };
+function update() {
+    setMarkerColor(marker, '#66FF33');
+    setTimeout(()=>{setMarkerColor(marker, '#FFFF00');},1000)
+    setTimeout(()=>{setMarkerColor(marker, '#FF0000');},2000)
+}
+
+function setMarkerColor(marker, color) {
+    let markerElement = marker.getElement();
+    markerElement
+        .querySelectorAll('svg g[fill="' + marker._color + '"]')[0]
+        .setAttribute("fill", color);
+    marker._color = color;
 }
