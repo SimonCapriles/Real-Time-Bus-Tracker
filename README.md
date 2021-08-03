@@ -29,3 +29,9 @@ Who worked on this:
 
 Found some issues?  
 Write to this email: <a href="mailto:info@kyohei.com.bo"><i class="font-icon icon-envelope"></i>info@kyohei.com.bo</a>
+
+## Github
+
+Want to download or fork the project?  
+Please generate your own access token on [Mapbox](https://www.mapbox.com/) by creating your [account](https://account.mapbox.com/auth/signup/)  
+Find it on Github: [Real-Time_Bus-Tracker](https://github.com/SimonCapriles/Real-Time-Bus-Tracker)
